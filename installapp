@@ -113,9 +113,6 @@ chmod +x /bin/$arqs
 done
 echo -e "\033[1;32m√ Menu de configuração instalado com sucesso! \033[0m"
 echo ""
-sleep 2
-echo -e "\033[1;36mConfigurando Servidor... \033[0m"
-sleep 2
 else
 #apt-get update
 apt-get install -y git
@@ -131,10 +128,6 @@ mv $arqs /bin
 chmod +x /bin/$arqs
 done
 echo -e "\033[1;32m√ Menu de configuração instalado com sucesso! \033[0m"
-echo ""
-sleep 2
-echo -e "\033[1;36mConfigurando Servidor... \033[0m"
-sleep 2
 fi
 cd
 rm -rf install 2> /dev/null
