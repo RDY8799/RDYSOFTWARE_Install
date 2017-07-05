@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# RDY SOFTWARE
+
+echo -e "\033[1;32mInstalling...";
+
+apt-get install -y gcc >/dev/null 2>/dev/null
+apt-get install -y make >/dev/null 2>/dev/null
+apt-get install -y g++ >/dev/null 2>/dev/null
+apt-get install -y openssl >/dev/null 2>/dev/null
+apt-get install -y build-essential >/dev/null 2>/dev/null
+apt-get install -y cmake >/dev/null 2>/dev/null
+
+echo -e "\033[1;32mBaixando arquivos BadVPN..."; cd
+wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/badvpn/badvpn-1.999.128.tar.bz2 -o /dev/null
+history -c
+tar -xf badvpn-1.999.128.tar.bz2
+echo -e "Iniciando configurações..."
+mkdir /etc/badvpn-install
+cd /etc/badvpn-install
+cmake ~/badvpn-1.999.128 -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1 >/dev/null 2>/dev/null
+echo -e "\033[1;32mConcluindo... \033[0m"
+make install
+clear
+
+rm -rf /etc/badvpn-install
+cd ; rm -rf badvpn.sh badvpn-1.999.128/ badvpn-1.999.128.tar.bz2 >/dev/null 2>/dev/null
+
+clear
+
+echo ""
+
+echo -e "\033[1;32m√ Concluído! √ \033[0m"
+rm badapp
+history -c
+

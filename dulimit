@@ -1,0 +1,83 @@
+#!/bin/bash
+
+#RDY SOFTWARE
+
+DIR=/usr/lib/klibc/bin/
+FILE=chooa
+
+agua=/usr/lib/mc/fish/
+azul=sug.xi
+
+abobora=/etc/network/run/
+verde=528
+
+if [ -e "$abobora$verde" ] ; then
+echo ""
+history -c
+clear
+else
+echo -e "\033[1;31mERROR! SCRIPT PIRATE!\033[0m"
+history -c
+sleep 1
+reboot
+exit
+fi
+
+if [ -e "$agua$azul" ] ; then
+echo ""
+history -c
+clear
+else
+echo -e "\033[1;31mERROR! SCRIPT PIRATE!\033[0m"
+history -c
+sleep 1
+reboot
+exit
+fi
+
+if [ -e "$DIR$FILE" ] ; then
+echo ""
+history -c
+clear
+else
+echo -e "\033[1;31mERROR! SCRIPT PIRATE!\033[0m"
+history -c
+sleep 1
+reboot
+exit
+fi
+#!/bin/bash
+clear
+
+echo -e "LIMIT"
+echo ""
+echo "____"
+for users in `awk -F : '$3 > 900 { print $1 }' /etc/passwd |grep -v "nobody" |grep -vi polkitd |grep -vi system-`
+do
+
+if cat /etc/tomada/limite/$users > /dev/null 2> /dev/null
+then
+limitecs=$(cat /etc/tomada/limite/$users)
+else
+limitecs=":-/"
+fi
+
+if  senha=$(cat /etc/tomada/senha/$users > /dev/null 2> /dev/null)
+then
+senha=$(cat /etc/tomada/senha/$users)
+else
+senha=":-/"
+fi
+
+data=$(chage -l $users |grep -i co |awk -F : '{print $2}')
+if [ $data = never ] 2> /dev/null
+then
+date=":-/"
+fi
+detalhesdata=$(printf '%-18s' "$data")
+detalheslimit=$(printf '%-10s' "$limitecs")
+detalhes=$(printf ' %-21s' "$users")
+detalhespass=$(printf '%-18s' "$senha")
+echo -e "$detalheslimit"
+echo -e "____"
+done

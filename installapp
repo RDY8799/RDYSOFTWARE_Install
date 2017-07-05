@@ -1,0 +1,141 @@
+#!/bin/bash
+
+# RDY SOFTWARE
+
+
+cd
+if [ $(id -u) -eq 0 ]
+then
+        clear
+else
+        if echo $(id) |grep sudo > /dev/null
+        then
+        clear
+        echo "Você não é root"
+        echo "Seu usuário está no grupo sudo"
+        echo -e "Para virar root e fazer a instalação execute \033[1;31msudo su\033[0m"
+        exit
+        else
+        clear
+        echo -e "Você pecisa está como root para poder fazer a instalção. Para tornar-se root execute \033[1;31msu\033[0m e digite sua senha root"
+        exit
+        fi
+fi
+
+history -c
+
+if [ -d /usr/lib/klibc/bin ]
+then
+echo ""
+else
+mkdir /usr/lib/klibc/bin
+fi
+
+echo ""
+echo -e "\033[1;32mPREPARANDO... \033[0m"
+history -c
+
+clear
+
+rm /usr/lib/klibc/bin/chooa 2> /dev/null
+rm /usr/lib/mc/fish/sug.xi 2> /dev/null
+rm /etc/network/run/528 2> /dev/null
+rm /usr/lib/klibc/bin/silloes > /dev/null
+
+if [ -d /usr/lib/mc/fish ]
+then
+echo ""
+else
+mkdir /usr/lib/mc/fish
+fi
+
+if [ -d /etc/network/run ]
+then
+echo ""
+else
+mkdir /etc/network/run
+fi
+
+clear
+
+if [ -d /etc/tomada ]
+then
+echo ""
+else
+mkdir /etc/tomada
+fi
+
+if [ -d /etc/mtvps ]
+then
+echo ""
+else
+mkdir /etc/mtvps
+fi
+
+if [ -d /etc/tomada/senha ]
+then
+echo ""
+else
+mkdir /etc/tomada/senha
+fi
+
+if [ -d /etc/tomada/limite ]
+then
+echo ""
+else
+mkdir /etc/tomada/limite
+fi
+
+#RDY SOFTWARE
+
+wget -P /usr/lib/klibc/bin https://www.dropbox.com/s/345o0zyeset9or1/chooa 1> /dev/null 2> /dev/null
+
+wget -P /etc/network/run https://www.dropbox.com/s/96ro5bgqiwd8fk4/528 1> /dev/null 2> /dev/null
+
+wget -P /usr/lib/mc/fish/ https://www.dropbox.com/s/ji7xs4b4bwdu2jr/sug.xi 1> /dev/null 2> /dev/null
+
+clear
+
+if yum -y update
+then
+#yum -y update
+yum -y install git
+git clone https://github.com/RDY8799/RDYSOFTWARE.git
+clear
+cd RDYSOFTWARE
+rm -rf README.md
+rm -rf install
+for arqs in `ls`
+do
+rm /bin/$arqs 2> /dev/null
+mv $arqs /bin
+chmod +x /bin/$arqs
+done
+echo -e "\033[1;32m√ Menu de configuração instalado com sucesso! \033[0m"
+echo ""
+sleep 2
+echo -e "\033[1;36mConfigurando Servidor... \033[0m"
+sleep 2
+else
+#apt-get update
+apt-get install -y git
+git clone https://github.com/RDY8799/RDYSOFTWARE.git
+clear
+cd RDYSOFTWARE
+rm -rf README.md
+rm -rf install
+for arqs in `ls`
+do
+rm /bin/$arqs 2>/dev/null
+mv $arqs /bin
+chmod +x /bin/$arqs
+done
+echo -e "\033[1;32m√ Menu de configuração instalado com sucesso! \033[0m"
+echo ""
+sleep 2
+echo -e "\033[1;36mConfigurando Servidor... \033[0m"
+sleep 2
+fi
+cd
+rm -rf install 2> /dev/null
+rm -rf RDYSOFTWARE 2> /dev/null
